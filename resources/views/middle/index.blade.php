@@ -81,6 +81,9 @@ Dashboard
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                                     Email</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    Nama Program</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                                     Nominal Donasi</th>
@@ -109,7 +112,10 @@ Dashboard
                                                     {{$donasi->email}}
                                                 </td>
                                                 <td>
-                                                    {{$donasi->nominal_donasi}}
+                                                    {{$donasi->program->title}}
+                                                </td>
+                                                <td>
+                                                    @currency($donasi->nominal_donasi)
                                                 </td>
                                                 <td>
                                                     @if ($donasi->verifikasi == 1)

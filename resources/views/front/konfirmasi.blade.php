@@ -66,7 +66,7 @@
                         <div class="card alert alert-inpo">
                             <span class="pb-2">ID Transaksi : <strong>{{$donatur->id_transaksi}}</strong></span>
                             <span class="pb-2">Nama Lengkap : <strong>{{$donatur->nama_donatur}}</strong></span>
-                            <span class="pb-2">Nominal Donasi : <strong>{{$donatur->nominal_donasi}}</strong></span><br>
+                            <span class="pb-2">Nominal Donasi : <strong>@currency($donatur->nominal_donasi)</strong></span><br>
                         <div class="pb-5 text-dark">
                             <label for="file">Masukan Bukti Pembayaran : </label>
                             <input id="file" type="file" class="d-block" name="bukti_pembayaran">

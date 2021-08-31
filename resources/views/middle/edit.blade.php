@@ -56,12 +56,6 @@ Edit Program
                             <br>
 
                             <div class="form-group">
-                                <label>Penjelasan Singkat</label>
-                                <input name="brief_explanation" type="text" class="form-control"
-                                    value="{{$program->brief_explanation}}">
-                            </div>
-
-                            <div class="form-group">
                                 <label>Target Donasi</label>
                                 <input name="donation_target" type="text"
                                     class="{{ $errors->has('donation_target') ? ' is-invalid' : '' }} form-control"

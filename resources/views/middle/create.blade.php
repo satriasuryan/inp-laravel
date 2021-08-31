@@ -45,16 +45,15 @@ Tambah Program
                             </div>
 
                             <div class="form-group">
-                                <label>Penjelasan Singkat</label>
-                                <input name="brief_explanation" type="text" class="form-control">
-                            </div>
-
-
-                            <div class="form-group">
                                 <label>Target Donasi</label>
+                                <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
                                 <input name="donation_target" type="text"
                                     class="{{ $errors->has('donation_target') ? ' is-invalid' : '' }} form-control"
                                     value="{{ old('donation_target') }}">
+                                </div>
                             </div>
 
                             @if ($errors->has('donation_target'))

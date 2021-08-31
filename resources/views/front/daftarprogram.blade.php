@@ -37,10 +37,10 @@
                         @endif
                         <p>Berakhir : {{$program->time_is_up}} </p>
                         <div class="goal mb-3">
-                            <p class="mb-1"><span>Terkumpul</span> Rp @if ($program->donation_collected == 0)
-                                0
+                            <p class="mb-1"><span>Terkumpul</span> @if ($program->donation_collected == 0)
+                                Rp. 0
                             @else
-                            {{$program->donation_collected}}
+                            @currency($program->donation_collected)
                             @endif</p>
                             <div class="progress mb-1" style="height:20px">
                                 <?php
@@ -50,7 +50,7 @@
                                 echo '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:'.$percent.'%; height:20px">'.$percent.'%</div>';
                                 ?>
                             </div>
-                            <p><span>Target</span> Rp {{$program->donation_target}}</p>
+                            <p><span>Target</span> @currency($program->donation_target)</p>
                         </div>
                         <p><a href="/donasi/{{$program->id}}" class="btn btn-light w-100">Donasi</a></p>
                     </div>

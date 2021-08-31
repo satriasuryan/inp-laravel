@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-lg-12 mt-6 mb-3">
             <div class="card-thx">
-                <h5>Anda telah berdonasi sebesar <strong>Rp. {{$donatur->nominal_donasi}} </strong>untuk program: <strong>{{$program->title}}</strong></h5>
+                <h5>Anda telah berdonasi sebesar <strong>@currency($donatur->nominal_donasi) </strong>untuk program: <strong>{{$program->title}}</strong></h5>
             <p class="pb-1">Berapapun uang yang Anda berikan, akan sangat membantu bagi mereka yang membutuhkan. Terima Kasih telah berdonasi, semoga Allah Subhanahu Wa Ta'ala membalas anda dengan kebaikan yang berlipat ganda, jazakumullah khoiron, barakallahu fiik.</p>
 
             <a href="/" class="btn btn-success">Kembali Kehalaman Utama</a>

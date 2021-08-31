@@ -51,11 +51,10 @@ class frontController extends Controller
         $donatur->users_id = $request->users_id;
         $donatur->id_transaksi = $id_transaksi;
         $donatur->nama_donatur = $request->nama_donatur;
-        $donatur->nominal_donasi = $request->nominal_donasi;
+        $donatur->nominal_donasi = str_replace('.', '', $request->nominal_donasi);
         $donatur->email = $request->email;
         $donatur->dukungan = $request->dukungan;
         $donatur->save();
-
         return redirect()->route('thx', ['id' => $donatur->id]);
     }
 

@@ -92,7 +92,6 @@ class programController extends Controller
         $this->validate(request(), [
             'title' => ['required', 'max:100'],
             'donation_target' => ['required', 'numeric'],
-            'brief_explanation' => ['required', 'max:200'],
             'donation_target' => ['required', 'min:7'],
             'description' => ['required'],
             'shelter_account_number' => ['required'],
@@ -104,6 +103,8 @@ class programController extends Controller
             $program->photo = $request->file('photo')->getClientOriginalName();
             $program->save();
         }
+        $program->donation_target = str_replace('.', '', $request->donation_target);
+        
         return redirect('/admin/program');
     }
 

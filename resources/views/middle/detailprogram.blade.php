@@ -5,217 +5,146 @@ Daftar Program
 @endsection
 
 @section('content')
-<section class="section-1">
+
+<div class="container">
     <div class="row">
-        <div class="col-lg-6">
-            <div class="card responsive">
-                <img src="{{$program->getFoto()}}">
-                <div class="container mt-2">
-                    <p>{{$program->title}}</p><br>
       
-                    <div class="d-flex no-block align-items-center mb-3">
-                      <div class="ml-1">
-                        <span class="badge badge-succes">{{$program->category->category_name}}</span>
-                      </div>
-                      <div class="ml-1">
-                        @if ($program->isPublished == 1)    
-                        <span class="badge badge-green">Published <i class="ti-check"></i></span>
-                    @else
-                        <span class="badge badge-red">Belum Dipublish</span>
-                    @endif
-                      </div>
-                      <div class="ml-1">
-                        @if ($program->isSelected == 1)
-                        <span class="badge badge-blue">Program Pilihan <i class="ti-check"></i></span>
-                    @endif
-                      </div>
-                  </div>
+        <div class="col-md-7 mt-10">
 
-
-                    <hr>
-                    <span>{{$program->brief_explanation}}</span>
-
-                    <table class="table table--bordered table--responsive">
-                        <tbody>
-                            <tr>
-                                <td>Donasi Dibuat</td>
-                                <td>{{$program->created_at->toDateString()}}</td>
-                            </tr>
-                            <tr>
-                                <td>Berakhir Pada</td>
-                                <td>{{$program->time_is_up}}</td>
-                            </tr>
-                            <tr>
-                                <td>Target Donasi</td>
-                                <td>{{$program->donation_target}}</td>
-                            </tr>
-                            <tr>
-                                <td>Donasi Terkumpul</td>
-                                <td>{{$program->donation_collected}}</td>
-                            </tr>
-                            <tr>
-                                <td>Nomor Rekening Penampungan</td>
-                                <td>{{$program->shelter_account_number}}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @if ($program->isPublished == 0)
-                                    <a class="btn btn-sm btn-success waves-effect waves-light mt-2 text-white"
-                                        href="/admin/published/{{$program->id}}">Publikasi</a>
-                                    @else
-                                    <a class="btn btn-sm btn-danger waves-effect waves-light mt-2 text-white"
-                                        href="/admin/published/{{$program->id}}">Batal Publikasi</a>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($program->isSelected == 0)
-                                    <a class="btn btn-sm btn-primary waves-effect waves-light mt-2 text-white"
-                                        href="/admin/selected/{{$program->id}}">Jadikan Program Pilihan</a>
-                                    @else
-                                    <a class="btn btn-sm btn-danger waves-effect waves-light mt-2 text-white"
-                                        href="/admin/selected/{{$program->id}}">Batal Jadikan Program Pilihan</a>
-                                    @endif
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="card">
+                <img src="{{$program->getFoto()}}" alt="Program Image">
             </div>
-            <div class="tab">
-                <div class="tab-header">
-                    <ul class="tab__navigation">
-                        <li class="tab__nav-item active" data-tab="#tab1-1">Deskripsi Program</li>
-                        <li class="tab__nav-item" data-tab="#tab1-2">Laporan Perkembangan</li>
+
+        </div>
+        <div class="col-md-5 mt-10 ">
+            @if ($program->donation_collected >= $program->donation_target)
+            <div class="btn btn-success mb-3">Sudah Tercapai <i class="fa fa-check"></i></div>
+            @else
+            <div class="btn btn-warning mb-3">Belum Tercapai </div>
+            @endif
+            <h3 class="mb-2"><strong>{{$program->title}}</strong></h3>
+            <p class="mb-2"><strong>{{$program->category->category_name}}</strong></p><hr>
+            <p class="mb-2">Dibuat : {{$program->created_at->toDateString()}}</p>
+            <p class="mb-2">Berakhir : {{$program->time_is_up}}</p>
+            <p class="mb-3">Nomor Rekening Penampungan: {{$program->shelter_account_number}}</p>
+
+            <div class="goal mb-3">
+                <p class="mb-1"><strong>Terkumpul</strong> @if ($program->donation_collected == 0)
+                    Rp. 0
+                    @else
+                    @currency($program->donation_collected)
+                    @endif</p>
+                <div class="progress mb-1" style="height:20px">
+                    <?php
+                                $total = $program->donation_target;
+                                $current = $program->donation_collected;
+                                $percent = round(($current/$total) * 100);
+                                echo '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:'.$percent.'%; height:20px">'.$percent.'%</div>';
+                                ?>
+                </div>
+                <p><strong>Target</strong> @currency($program->donation_target)</p>
+            </div>
+            @if ($program->isPublished == 0)
+            <a class="btn btn-success waves-effect waves-light mt-2 text-white"
+                href="/admin/published/{{$program->id}}">Publish</a>
+            @else
+            <a class="btn btn-danger waves-effect waves-light mt-2 text-white"
+                href="/admin/published/{{$program->id}}">Jadikan Draft</a>
+            @endif
+            @if ($program->isSelected == 0)
+            <a class="btn btn-success waves-effect waves-light mt-2 text-white"
+                href="/admin/selected/{{$program->id}}">Jadikan Program Pilihan</a>
+            @else
+            <a class="btn btn-danger waves-effect waves-light mt-2 text-white"
+                href="/admin/selected/{{$program->id}}">Jadikan Program Biasa</a>
+            @endif
+        </div>
+        </div>
+    </div>
+    {{-- ========== --}}
+
+    <div class="container">
+    <div class="row pt-2 pb-3">
+        <div class="col-lg-12">
+            <div class="main">
+                <div class="tab-btns">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                role="tab" aria-controls="pills-home" aria-selected="true">Deskripsi</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                role="tab" aria-controls="pills-profile" aria-selected="false">Laporan Perkembangan</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-4-tab" data-toggle="pill" href="#pills-4" role="tab"
+                                aria-controls="pills-4" aria-selected="false">Donatur</a>
+                        </li>
                     </ul>
                 </div>
+                <div class="tab-content pt-2" id="pills-tabContent">
+                <div class="tab-pane fade show active mt-3" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    {!! $program->description !!}
+                </div>
 
-                <div class="tab-body">
-                    <div class="tab__content" id="tab1-1">
-                        <p class="desc-program">{!! $program->description !!}</p>
-                    </div>
-
-                    <div class="tab__content" id="tab1-2" style="display: none;">
-                        @if ($program->isPublished == 1)
-                        <a href="/laporanperkembangan/create/{{$program->id}}">Buat Laporan Baru</a>
-                        @else
-                        <span class="alert alert--warning">Tidak bisa buat laporan perkembangan, Program belum di
-                            publish Admin</span>
-                        @endif
-
-
-                        <ul id="accordion" class="accordion">
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach ($devs as $dev)
-                            <li>
-                                <div class="link"><i class="fa fa-database"></i>UPDATE #{{$i}}<i
-                                        class="fa fa-chevron-down"></i></div>
-                                <ul class="submenu">
-                                    <div class="container">
-                                        <h2><strong>{{$dev->title}}</strong></h2>
-                                        <p class="pt-2">{!! $dev->description !!}</p>
-                                    </div>
-                                </ul>
-                            </li>
-                            @php
-                            $i++;
-                            @endphp
-                            @endforeach
-                        </ul>
-
+                <div class="tab-pane fade mt-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <a class="btn btn-sm btn-success mb-3" href="/admin/laporanperkembangan/create/{{$program->id}}">+ Buat Laporan Baru</a>                    
+                 
+                    <div id="accordion">
+                        @php
+                        $i = 1;
+                        @endphp
+                        @foreach ($devs as $dev)
+                        <div class="card">
+                            <div class="card-header" id="heading-3">
+                                <h5>
+                                    <a class="collapsed" role="button" data-toggle="collapse"
+                                        href="#collapse-{{$dev->id}}" aria-expanded="false"
+                                        aria-controls="collapse-{{$dev->id}}">
+                                        <span>UPDATE #{{$i++}}</span>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapse-{{$dev->id}}" class="collapse" data-parent="#accordion"
+                                aria-labelledby="heading-3">
+                                <div class="card-body">
+                                    <h2>{{$dev->title}}</h2>
+                                    <p>{{$dev->created_at->toDateString()}}</p>
+                                    {!! $dev->description !!}
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-lg-6">
-
-            <div class="box box--dark">
-                <div class="box-header">
-                    <h3>Pendonasi</h3>
-                </div>
-                <div class="box-body pt-0 px-0 responsive">
-
-                    <table class="table--dark">
+                <div class="tab-pane fade pt-2" id="pills-4" role="tabpanel" aria-labelledby="pills-4-tab">
+                    <table class="table table-bordered">
                         @if ($donatur == 0)
                         <tr>
                             <th>Belum ada yang berdonasi</th>
                         </tr>
                         @else
-
-                        <thead>
-                            <tr>
-                                <th>Nama Donatur</th>
-                                <th>Nominal Donasi</th>
-                                <th>Dukungan</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             @foreach ($program->donatur as $donatur)
                             <tr>
-                                <td>{{$donatur->nama_donatur}}</td>
-                                <td>{{$donatur->nominal_donasi}}</td>
-                                <td>{{$donatur->dukungan}}</td>
-
+                                <th>{{$donatur->nama_donatur}}</th>
+                                <th>@currency($donatur->nominal_donasi)</th>
+                                <th>{{$donatur->dukungan}}</th>
                             </tr>
                             @endforeach
                         </tbody>
                         @endif
-
                     </table>
+                </div>
+                </div>
 
-                </div>
-                <div class="pagination-wrapper clearfix">
-                    <ul class="pagination float--right">
-                        <li class="pagination-item"><a class="active">1</a></li>
-                        <li class="pagination-item"> <a>2</a></li>
-                        <li class="pagination-item"> <a>3</a></li>
-                        <li class="pagination-item"> <a>Next</a></li>
-                    </ul>
-                </div>
             </div>
 
+
         </div>
-
-
-
     </div>
-</section>
-
-@section('script')
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-    $(function () {
-        var Accordion = function (el, multiple) {
-            this.el = el || {};
-            this.multiple = multiple || false;
-
-            // Variables privadas
-            var links = this.el.find('.link');
-            // Evento
-            links.on('click', {
-                el: this.el,
-                multiple: this.multiple
-            }, this.dropdown)
-        }
-
-        Accordion.prototype.dropdown = function (e) {
-            var $el = e.data.el;
-            $this = $(this),
-                $next = $this.next();
-
-            $next.slideToggle();
-            $this.parent().toggleClass('open');
-
-            if (!e.data.multiple) {
-                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-            };
-        }
-
-        var accordion = new Accordion($('#accordion'), false);
-    });
-</script>
-@endsection
+    </div>
 
 @endsection

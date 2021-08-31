@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="{{asset('middle-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('middle-assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('middle-assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  @yield('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -185,5 +186,6 @@
     });
   });
 </script>
+@yield('script')
 </body>
 </html>

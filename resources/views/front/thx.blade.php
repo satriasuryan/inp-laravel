@@ -63,7 +63,7 @@
                     </tr>
                     <tr>
                         <td>Nominal Donasi</td>
-                        <th>Rp. {{$donatur->nominal_donasi}}</th>
+                        <th>@currency($donatur->nominal_donasi)</th>
                     </tr>
                 </tbody>
             </table>

@@ -25,33 +25,38 @@
 
 <div class="row">
     @foreach ($programCategory->programs as $program)
-            <div class="col-md-6 col-lg-3">
-                <div class="causes causes-2 text-center ftco-animate">
-                    <a href="/donasi/{{$program->id}}" class="img w-100" style="background-image: url({{$program->getFoto()}});"></a>
-                    <div class="text p-3">
-                        <h2><a href="/donasi/{{$program->id}}">{{$program->title}}</a></h2>
-                        <p>{{$program->brief_explanation}}</p>
-                        <div class="goal mb-4">
-                            <p class="mb-1"><span>Terkumpul</span> Rp @if ($program->donation_collected == 0)
-                                0
-                            @else
-                            {{$program->donation_collected}}
-                            @endif</p>
-                            <div class="progress mb-1" style="height:20px">
-                                <?php
-                                $total = $program->donation_target;
-                                $current = $program->donation_collected;
-                                $percent = round(($current/$total) * 100);
-                                echo '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:'.$percent.'%; height:20px">'.$percent.'%</div>';
-                                ?>
-                            </div>
-                            <p><span>Target</span> Rp {{$program->donation_target}}</p>
-                        </div>
-                        <p><a href="/donasi/{{$program->id}}" class="btn btn-light w-100">Donasi</a></p>
+    <div class="col-md-6 col-lg-3">
+        <div class="causes causes-2 text-center ftco-animate">
+            <a href="/donasi/{{$program->id}}" class="img w-100" style="background-image: url({{$program->getFoto()}});"></a>
+            <div class="text p-3">
+                <h2><a href="/donasi/{{$program->id}}">{{$program->title}}</a></h2>
+                @if ($program->donation_collected >= $program->donation_target)
+                <div class="btn btn-sm btn-success mb-3">Sudah Tercapai <i class="fa fa-check"></i></div>
+                @else
+                <div class="btn btn-sm btn-warning mb-3">Belum Tercapai </div>
+                @endif
+                <p>Berakhir : {{$program->time_is_up}} </p>
+                <div class="goal mb-3">
+                    <p class="mb-1"><span>Terkumpul</span> @if ($program->donation_collected == 0)
+                        Rp. 0
+                    @else
+                    @currency($program->donation_collected)
+                    @endif</p>
+                    <div class="progress mb-1" style="height:20px">
+                        <?php
+                        $total = $program->donation_target;
+                        $current = $program->donation_collected;
+                        $percent = round(($current/$total) * 100);
+                        echo '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:'.$percent.'%; height:20px">'.$percent.'%</div>';
+                        ?>
                     </div>
+                    <p><span>Target</span> @currency($program->donation_target)</p>
                 </div>
+                <p><a href="/donasi/{{$program->id}}" class="btn btn-light w-100">Donasi</a></p>
             </div>
-            @endforeach
         </div>
-  </section>
+    </div>
+    @endforeach
+</div>
+</section>
 @endsection

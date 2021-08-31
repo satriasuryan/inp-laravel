@@ -26,10 +26,10 @@ Detail
             @endif
 
             <div class="goal mb-3">
-                <p class="mb-1"><span>Terkumpul</span> Rp @if ($program->donation_collected == 0)
-                    0
+                <p class="mb-1"><span>Terkumpul</span> @if ($program->donation_collected == 0)
+                    Rp. 0
                     @else
-                    {{$program->donation_collected}}
+                    @currency($program->donation_collected)
                     @endif</p>
                 <div class="progress mb-1" style="height:20px">
                     <?php
@@ -39,7 +39,7 @@ Detail
                                 echo '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:'.$percent.'%; height:20px">'.$percent.'%</div>';
                                 ?>
                 </div>
-                <p><span>Target</span> Rp {{$program->donation_target}}</p>
+                <p><span>Target</span> @currency($program->donation_target)</p>
             </div>
             <p><a href="/donasi/{{$program->id}}/donasi" class="btn btn-light w-100">Donasi</a></p>
         </div>
@@ -57,7 +57,7 @@ Detail
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                role="tab" aria-controls="pills-profile" aria-selected="false">Update</a>
+                                role="tab" aria-controls="pills-profile" aria-selected="false">Laporan Perkembangan</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="pills-4-tab" data-toggle="pill" href="#pills-4" role="tab"
@@ -66,11 +66,11 @@ Detail
                     </ul>
                 </div>
                 <div class="tab-content pt-3" id="pills-tabContent">
-                <div class="tab-pane fade show active mt-3" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade show active mt-1" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     {!! $program->description !!}
                 </div>
 
-                <div class="tab-pane fade mt-3" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane fade mt-1" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <div id="accordion">
                         @php
                         $i = 1;
@@ -91,7 +91,6 @@ Detail
                                 <div class="card-body">
                                     <h2>{{$dev->title}}</h2>
                                     <p>{{$dev->created_at->toDateString()}}</p>
-                                    <br><br>
                                     {!! $dev->description !!}
                                 </div>
                             </div>
@@ -111,7 +110,7 @@ Detail
                             @foreach ($program->donatur as $donatur)
                             <tr>
                                 <th>{{$donatur->nama_donatur}}</th>
-                                <th>Rp. {{$donatur->nominal_donasi}}</th>
+                                <th>@currency($donatur->nominal_donasi)</th>
                                 <th>{{$donatur->dukungan}}</th>
                             </tr>
                             @endforeach
