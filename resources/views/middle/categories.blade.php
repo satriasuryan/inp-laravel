@@ -3,12 +3,23 @@
 Daftar Kategori
 @endsection
 
+@section('style')
+<style>
+    .peringatan{
+font-weight: bold;
+color: red;
+    }
+    </style>
+@endsection
+
 @section('content')
 
 <section class="content">
     <div class="container-fluid">
+
         <div class="row">
             <div class="col-12">
+                <p class="peringatan">Note : Jika menggunakan fitur hapus kategori, program yang tergabung dalam kategori tersebut akan ikut terhapus, usahakan edit terlebih dahulu kategori di tiap program atau edit saja melalui tombol fitur dibawah, terimakasih.</p>
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Daftar Kategori</h3>
@@ -50,6 +61,9 @@ Daftar Kategori
                                                 <td class="dtr-control sorting_1" tabindex="0">
                                                     {{$category->category_name}}</td>
                                                 <td>
+                                                    <a class="btn btn-warning"
+                                                        href="/admin/categories/{{$category->id}}/edit">Edit</a>
+
                                                     <a class="btn btn-danger"
                                                         href="/admin/delete/{{$category->id}}">Hapus</a>
                                                 </td>

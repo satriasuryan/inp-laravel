@@ -28,15 +28,8 @@ class backController extends Controller
         return view('back.program', compact('programs'));
     }
 
-    public function categories(){
-        $categories = Category::latest()->get();
-        return view('middle.categories', ['categories' => $categories]);
-    }
+   
 
-    public function categoriescreate(Request $request){
-        Category::create($request->all());
-        return redirect()->back();
-    }
 
     public function published($id){
         $program = Program::find($id);
@@ -48,8 +41,6 @@ class backController extends Controller
 
         return redirect()->back();
     }
-
-   
 
     public function selected($id){
         $program = Program::find($id);

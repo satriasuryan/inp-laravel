@@ -23,6 +23,8 @@
 
     <title>@yield('title')</title>
 
+    <link rel="shortcut icon" href="{{ asset('DSIM.ico')}}" type="image/x-icon">
+
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
         rel="stylesheet">

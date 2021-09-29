@@ -87,16 +87,16 @@ Dashboard
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                                     Nominal Donasi</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                    Status</th>
+                                                    Bukti Pembayaran</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                                     Aksi</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1"
                                                     aria-label="Platform(s): activate to sort column ascending">
-                                                    bukti_pembayaran</th>
+                                                    Foto Bukti Pembayaran</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -118,10 +118,10 @@ Dashboard
                                                     @currency($donasi->nominal_donasi)
                                                 </td>
                                                 <td>
-                                                    @if ($donasi->verifikasi == 1)
-                                                    <button class="btn btn-green">Terverifikasi</button>
+                                                    @if ($donasi->bukti_pembayaran == null)
+                                                    <button class="btn btn-green">Tidak Ada</button>
                                                     @else
-                                                    <button class="btn btn-red">Belum Terverifikasi</button>
+                                                    <button class="btn btn-red">Ada</button>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -129,9 +129,9 @@ Dashboard
                                                     @if ($donasi->verifikasi == 0)
 
                                                     <a href="/admin/verifikasi/{{$donasi->id}}"
-                                                        class="btn btn-sm btn-warning"> Verif </a>
+                                                        class="btn btn-sm btn-warning"> Verifikasi </a>
                                                     @else
-                                                    <btn class="btn btn-sm btn-success"> Terverifikasi </btn>
+                                                    <btn class="btn btn-sm btn-success"> Sudah Terverifikasi </btn>
 
                                                     @endif
                                                 </td>

@@ -1,7 +1,7 @@
 @extends('front.layout.front-program')
 
 @section('title')
-    Daftar Program
+    Program
 @endsection
 
 

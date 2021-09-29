@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('back-assets/assets/images/favicon.png')}}">
+    <link rel="shortcut icon" href="{{ asset('DSIM.ico')}}" type="image/x-icon">
     <title>@yield('title')</title>
     <!-- chartist CSS -->
     <link href="{{asset('back-assets/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">

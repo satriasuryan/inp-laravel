@@ -18,7 +18,7 @@ class programController extends Controller
         $unverif = DonationConfirmation::where('verifikasi', 0)->whereNotNull('bukti_pembayaran')->count();
         $verif = DonationConfirmation::where('verifikasi', 1)->whereNotNull('bukti_pembayaran')->count();
         $tidakupload = DonationConfirmation::where('bukti_pembayaran', null)->count();
-        $donasis = DonationConfirmation::whereNotNull('bukti_pembayaran')->latest()->get();
+        $donasis = DonationConfirmation::latest()->get();
         return view('middle.index', compact('unverif', 'verif', 'tidakupload', 'donasis'));
     }
 
@@ -53,6 +53,7 @@ class programController extends Controller
         }
         return redirect()->back();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -104,7 +105,7 @@ class programController extends Controller
             $program->save();
         }
         $program->donation_target = str_replace('.', '', $request->donation_target);
-        
+
         return redirect('/admin/program');
     }
 
@@ -162,5 +163,30 @@ class programController extends Controller
     {
         Program::destroy($id);
         return redirect()->back();
+    }
+
+    public function categories()
+    {
+        $categories = Category::latest()->get();
+        return view('middle.categories', ['categories' => $categories]);
+    }
+
+    public function categoriescreate(Request $request)
+    {
+        Category::create($request->all());
+        return redirect()->back();
+    }
+
+    public function editkategori($id)
+    {
+        $categories = Category::find($id);
+        return view('middle/editkategori', compact('categories'));
+    }
+
+    public function updatekategori(Request $request, $id)
+    {
+        $categories = Category::find($id);
+        $categories->update($request->all());
+        return redirect('admin/categories');
     }
 }

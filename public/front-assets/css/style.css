@@ -12697,27 +12697,27 @@ h5,
   top: 0;
   bottom: 0;
   width: 25%;
-  opacity: .3;
+  opacity: .5;
   z-index: 0;
 }
 
 .owl-carousel.home-slider .slider-item .overlay-1 {
-  background: #158f67;
+  background: #293531;
   left: 25%;
 }
 
 .owl-carousel.home-slider .slider-item .overlay-2 {
-  background: #158f67;
+  background: #293531;
   left: 50%;
 }
 
 .owl-carousel.home-slider .slider-item .overlay-3 {
-  background: #158f67;
+  background: #293531;
   left: 75%;
 }
 
 .owl-carousel.home-slider .slider-item .overlay-4 {
-  background: #158f67;
+  background: #293531;
   left: 0%;
 }
 

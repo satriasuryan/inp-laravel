@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('middle-assets/dist/img/AdminLTELogo.png')}}">
+  <link rel="shortcut icon" href="{{ asset('DSIM.ico')}}" type="image/x-icon">
   <title>@yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -70,7 +70,7 @@
     <!-- Brand Logo -->
     <a href="/admin/middle" class="brand-link">
       <img src="{{asset('middle-assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
-      <span class="brand-text font-weight-light"><strong>IN Peduli</strong></span>
+      <span class="brand-text font-weight-light"><strong>Divisi Sosial</strong></span>
     </a>
 
     <!-- Sidebar -->

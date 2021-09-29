@@ -39,17 +39,21 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
             Route::get('/delete/{id}', 'back\\backController@destroy');
             Route::get('/hapus/{id}', 'back\\backController@hapusProgram');
 
-            Route::get('/categories', 'back\\backController@categories');
-            Route::post('/categories/create', 'back\\backController@categoriescreate');
+            Route::get('/categories', 'middle\\programController@categories');
+            Route::post('/categories/create', 'middle\\programController@categoriescreate');
+            Route::get('/categories/{id}/edit', 'middle\\programController@editkategori');
+            Route::post('/categories/{id}/update', 'middle\\programController@updatekategori');
+            
             Route::get('/laporanperkembangan/create/{id}', 'middle\\programController@createlaporanperkembangan');
             Route::get('/published/{id}', 'back\\backController@published');
             Route::get('/verifikasi/{id}', 'middle\\programController@verifikasi');
             Route::get('/selected/{id}', 'back\\backController@selected');
-
+            Route::resource('category', 'back\\backController');
             Route::post('/laporanperkembangan/store', 'middle\\programController@storelaporanperkembangan');
             Route::get('/middle', 'middle\\programController@middle');
             Route::get('/detailprogram/{id}', 'middle\\programController@detailprogram')->name('detail');
             Route::resource('program', 'middle\\programController');
+            
         });
     });
 });

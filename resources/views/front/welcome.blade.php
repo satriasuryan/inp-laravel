@@ -1,7 +1,7 @@
 @extends('front.layout.front-layouts')
 
 @section('title')
-Imam Nawawi Peduli
+Divisi Sosial Imam Nawawi
 @endsection
 
 @section('content')
@@ -145,12 +145,53 @@ Imam Nawawi Peduli
             <div class="col-md-12 wrap-about py-5">
                 <div class="heading-section">
                     <h2 class="mb-4">Selamat Datang</h2>
-                    <p>Kami adalah her way she met a copy. The copy warned the Little Blind Text, that where it came
-                        from it would have been rewritten a thousand times and everything that was left from its origin
-                        would be the word "and" and the Little Blind Text should turn around and return to its own, safe
-                        country. But nothing the copy said could convince her and so it didn’t take long until a few
-                        insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into
-                        their agency, where they abused her for their.</p>
+                    <p align="justify">
+                        Divisi Sosial Imam Nawawi adalah program yg dibuat untuk memudahkan wali murid INIS maupun kaum
+                        muslimin secara umum untuk menyalurkan zakat, infak dan shadaqah melalui
+                        Yayasan Dakwah Imam Nawawi.
+                        <br><br>
+                        Kesulitan yang dirasakan kaum muslimin dalam mendapatkan pendidikan yang layak menjadi
+                        pertimbangan terbesar kami dalam menjalankan program ini. <br><br>
+                        Dimulai dari ruang lingkup yang terbatas, alhamdulillah kami berhasil menyalurkan dana dari para
+                        donatur untuk membantu yatim dan dhuafa dalam mengenyam
+                        pendidikan yang layak untuk mereka. Kemudian perlahan kami menyadari bahwa bukan pendidikan saja
+                        yang kaum muslimin butuhkan, melainkan bantuan disaat
+                        mereka membutuhkan. Dan hal ini yang mendorong terbentuknya Divisi Sosial Imam Nawawi. <br><br>
+                        Sebagai bentuk keseriusan kami dalam membantu kaum muslimin, kami memulai langkah nyata dengan
+                        program kerja yang meliputi:
+                        <ol>
+                            <li>Donasi Pendidikan
+                                <ol type='a'>
+                                    <li>Program Orang Tua Asuh (OTA)</li>
+                                    <li>Infaq Pendidikan Umum</li>
+                                </ol>
+                            </li>
+                            <li>Donasi Wakaf
+                                <ol type='a'>
+                                    <li>Wakaf pembangunan & pembebasan lahan</li>
+                                    <li>Wakaf Al Quran</li>
+                                </ol>
+                            </li>
+                            <li>Donasi Sosial
+                                <ol type='a'>
+                                    <li>Bantuan Bencana Alam & Kemanusiaan</li>
+                                    <li>Bantuan Program Dakwah Imam Nawawi</li>
+                                    <li>Bantuan sosial lain yang bermanfaat untuk mengurangi kesulitan kaum muslimin
+                                        baik dalam maupun luar negeri</li>
+                                </ol>
+                            </li>
+                        </ol>
+                        Sebelum berganti nama menjadi Divisi Sosial Imam Nawawi pada 18 September 2021, kami berangkat
+                        dengan membawa nama program Sunduq Peduli Imam Nawawi (SPIN)
+                        yang aktif dalam menyalurkan dana Zakat, Infaq, dan Shodaqoh secara amanah kepada orang-orang
+                        yang membutuhkan. <br><br>
+
+                        Sebagai informasi, per Juli 2019, ada 11 Yatim dan 37 Dhuafa yang mendapat keringanan biaya di
+                        INIS, dengan tanggungan biaya sebesar Rp 64.380.000 untuk SPP
+                        selama setahun (Rp 5.365.000/bulan) dan Rp 61.950.000 untuk uang masuk & daftar ulang (Total
+                        biaya pendidikan yg seharusnya disubsidi Muhsinin sebesar
+                        Rp 126.330.000 per Juli 2019).
+                    </p>
                 </div>
             </div>
         </div>
@@ -161,42 +202,33 @@ Imam Nawawi Peduli
 <section class="ftco-counter" id="section-counter">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 mb-5 mb-md-0 text-center text-md-left">
-                <h2 class="font-weight-bold" style="color: #fff; font-size: 22px;">We're on a mission to help all your
-                    problems</h2>
-                <a href="/daftarprogram" class="btn btn-white btn-outline-white">Donasi</a>
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18 text-center">
+                    <div class="text">
+                        <strong class="number">{{$programYangAda}}</strong>
+                    </div>
+                    <div class="text">
+                        <span>Program Dibuat</span>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <strong class="number">{{$programYangAda}}</strong>
-                            </div>
-                            <div class="text">
-                                <span>Program Dibuat</span>
-                            </div>
-                        </div>
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18 text-center">
+                    <div class="text">
+                        <strong class="number">{{$programPilihan}}</strong>
                     </div>
-                    <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <strong class="number">{{$programPilihan}}</strong>
-                            </div>
-                            <div class="text">
-                                <span>Program Pilihan</span>
-                            </div>
-                        </div>
+                    <div class="text">
+                        <span>Program Pilihan</span>
                     </div>
-                    <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <strong class="number">{{$orangBerdonasi}}</strong>
-                            </div>
-                            <div class="text">
-                                <span>Orang Berdonasi</span>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18 text-center">
+                    <div class="text">
+                        <strong class="number">{{$orangBerdonasi}}</strong>
+                    </div>
+                    <div class="text">
+                        <span>Orang Berdonasi</span>
                     </div>
                 </div>
             </div>

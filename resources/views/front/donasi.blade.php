@@ -17,13 +17,15 @@ Detail
 
         </div>
         <div class="col-md-5 mt-10 ">
-            <p class="mb-1">Berakhir : {{$program->time_is_up}}</p>
-            <h3 class="mb-3"><strong>{{$program->title}}</strong></h3>
             @if ($program->donation_collected >= $program->donation_target)
-            <div class="btn btn-sm btn-success mb-3">Sudah Tercapai <i class="fa fa-check"></i></div>
+            <div class="btn btn-success mb-3">Sudah Tercapai <i class="fa fa-check"></i></div>
             @else
-            <div class="btn btn-sm btn-warning mb-3">Belum Tercapai </div>
+            <div class="btn btn-warning mb-3">Belum Tercapai </div>
             @endif
+            <h3 class="mb-2"><strong>{{$program->title}}</strong></h3>
+            <p class="mb-2"><strong>{{$program->category->category_name}}</strong></p><hr>
+            <p class="mb-2">Dibuat : {{$program->created_at->toDateString()}}</p>
+            <p class="mb-2">Berakhir : {{$program->time_is_up}}</p>
 
             <div class="goal mb-3">
                 <p class="mb-1"><span>Terkumpul</span> @if ($program->donation_collected == 0)

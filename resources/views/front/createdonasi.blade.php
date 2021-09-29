@@ -8,37 +8,6 @@
 body{
     background: #f2f3f4 !important;
 }
-        
-.nav-bar{
-    background-color: #fff;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-
-.logo{
-    color: #fff;
-    background-color: #0af;
-}
-
-.nav-bar li a{
-    text-decoration: none;
-    color: #333;
-}
-
-.info-program{
-    background: #fff;
-    min-height: 110px;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    margin-top: 20px;  
-}
-
-.info-program .col-3{
-    line-height: 110px; 
-}
-
-img{
-    width: 90%;
-}
 
 .form-donatur{
     border-radius: 8px;
@@ -71,7 +40,7 @@ img{
                     <div class="container mt-4">
                         <div class="container">
                             <div class="form-group">
-                            <h3 class="pb-2">Anda akan berdonasi untuk program: <strong>{{$program->title}}</strong></h3>
+                            <h4 class="pb-2">Anda akan berdonasi untuk program: <strong>{{$program->title}}</strong></h4>
                             </div>
                             <div class="form-group">
                             <label class="sr-only" for="nominal">Nominal donasi</label>

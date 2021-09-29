@@ -83,7 +83,11 @@
                                 <span><input id="file" type="file" class="d-block" name="bukti_pembayaran"></span>
                                     <span><button type="submit" class="btn btn-success mt-2">Kirim</button></span>
                     </form>
-                    
+                    <div class="mt-2"><span class="mt-3">Atau bisa kirim bukti pembayaran via Whatsapp dengan klik tombol dibawah</span></div>
+                    <div class="mt-1"><a href="https://api.whatsapp.com/send?phone=6285649880427" target="_blank">
+                        <img border="0" data-original-height="147" data-original-width="800" height="36" 
+                        src="https://2.bp.blogspot.com/-f_HyTwJfozs/Web6RdiiDoI/AAAAAAAABbY/BfW9LhyoFmco6fVVN7zhl8UNQMbS0BECQCLcBGAs/s200/chat-via-WA-800x147.png" width="200" />
+                    </a></div>
             </div>
         </div>
         </div>
