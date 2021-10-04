@@ -9,7 +9,6 @@ use App\Program;
 use App\Development;
 use App\DonationConfirmation;
 use App\User;
-use App\Report;
 use Alert;
 
 class frontController extends Controller
@@ -30,7 +29,7 @@ class frontController extends Controller
     {
         $program = Program::latest()->find($id);
         $devs = Development::where('program_id', $program->id)->latest()->get();
-        $donatur = DonationConfirmation::where('program_id', $id)->where('verifikasi', 1)->latest()->count();
+        $donatur = DonationConfirmation::where('program_id', $program->id)->where('verifikasi', 1)->latest()->count();
         return view('front.donasi', compact('program', 'devs', 'donatur'));
     }
 
@@ -77,13 +76,6 @@ class frontController extends Controller
         return view('front.programcategory', compact('programCategory', 'categories', 'programs'));
     }
 
-    public function konfirmasi(Request $request)
-    {
-        $donaturs = DonationConfirmation::where('id_transaksi', $request->search)->where('bukti_pembayaran', null)->get();
-
-        return view('front.konfirmasi', compact('donaturs'));
-    }
-
     public function konfirmasistore(Request $request, $id)
     {
         $konfirmasi = DonationConfirmation::where('id_transaksi', $id)->first();
@@ -106,13 +98,6 @@ class frontController extends Controller
         $donatur = DonationConfirmation::find($id);
         $program = Program::where('id', $donatur->program_id)->first();
         return view('front.thx', compact('donatur', 'program'));
-    }
-
-    public function report(Request $request)
-    {
-        Report::create($request->all());
-        Alert::success('Laporan Dikirim', 'Terima Kasih telah mengirimkan laporan');
-        return redirect()->back();
     }
 
     public function thxkonfir($id)

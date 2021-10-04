@@ -1,4 +1,4 @@
-@extends('middle.layout.middle-layouts')
+@extends('back.layout.back-layouts')
 @section('title')
     Buat Laporan Perkembangan
 @endsection
@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Tambah Laporan Pekembangan</h3>
+                        <h3 class="card-title">Tambah Laporan Perkembangan</h3>
                     </div>
                     <div class="card-body">
                       <form action="/admin/laporanperkembangan/store" method="post">

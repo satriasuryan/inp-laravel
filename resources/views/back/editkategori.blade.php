@@ -1,4 +1,4 @@
-@extends('middle.layout.middle-layouts')
+@extends('back.layout.back-layouts')
 
 @section('title')
 Edit Kategori
