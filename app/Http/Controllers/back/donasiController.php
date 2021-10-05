@@ -21,8 +21,7 @@ class donasiController extends Controller
         return view('back.index', compact('unverif', 'verif', 'tidakupload', 'donasis'));
     }
 
-
-public function verifikasi($id)
+    public function verifikasi($id)
     {
         $donasis = DonationConfirmation::where('id', $id)->find($id);
         $collected = DonationConfirmation::where('program_id', $donasis->program_id)->sum('nominal_donasi');
@@ -34,5 +33,6 @@ public function verifikasi($id)
         return redirect()->back();
     }
 
+    
 
 }
