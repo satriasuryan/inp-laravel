@@ -29,7 +29,7 @@ class frontController extends Controller
     {
         $program = Program::latest()->find($id);
         $devs = Development::where('program_id', $program->id)->latest()->get();
-        $donatur = DonationConfirmation::where('program_id', $program->id)->where('verifikasi', 1)->latest()->count();
+        $donatur = DonationConfirmation::where('program_id', $program->id)->wherenotnull('verifikasi')->latest()->count();
         return view('front.donasi', compact('program', 'devs', 'donatur'));
     }
 

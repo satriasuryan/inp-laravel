@@ -23,13 +23,15 @@ class donasiController extends Controller
 
     public function verifikasi($id)
     {
-        $donasis = DonationConfirmation::where('id', $id)->find($id);
-        $collected = DonationConfirmation::where('program_id', $donasis->program_id)->sum('nominal_donasi');
-        $program = Program::where('id', $donasis->program_id)->first();
-        $coba = $program->update(['donation_collected' => $collected]);
-        if ($donasis->verifikasi == 0) {
-            $donasis->update(['verifikasi' => 1, $coba]);
-        }
+        $donasis = DonationConfirmation::findOrFail($id);
+        // $collected = DonationConfirmation::where('program_id', $donasis->program_id)->sum('nominal_donasi');
+        // $program = Program::where('id', $donasis->program_id)->first();
+        // $coba = $program->update(['donation_collected' => $collected]);
+        // if ($donasis->verifikasi == 0) {
+        //     $donasis->update(['verifikasi' => 1]);
+        //}
+        $donasis->verifikasi = 1; //Approved
+        $donasis->save();
         return redirect()->back();
     }
 
