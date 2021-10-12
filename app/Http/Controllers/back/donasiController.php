@@ -27,11 +27,9 @@ class donasiController extends Controller
         // $collected = DonationConfirmation::where('program_id', $donasis->program_id)->sum('nominal_donasi');
         // $program = Program::where('id', $donasis->program_id)->first();
         // $coba = $program->update(['donation_collected' => $collected]);
-        // if ($donasis->verifikasi == 0) {
-        //     $donasis->update(['verifikasi' => 1]);
-        //}
-        $donasis->verifikasi = 1; //Approved
-        $donasis->save();
+         if ($donasis->verifikasi == 0) {
+            $donasis->update(['verifikasi' => 1]);
+        }
         return redirect()->back();
     }
 

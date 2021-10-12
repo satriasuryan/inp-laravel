@@ -27,9 +27,9 @@ class frontController extends Controller
 
     public function donasi($id)
     {
-        $program = Program::latest()->find($id);
+        $program = Program::find($id);
         $devs = Development::where('program_id', $program->id)->latest()->get();
-        $donatur = DonationConfirmation::where('program_id', $program->id)->wherenotnull('verifikasi')->latest()->count();
+        $donatur = DonationConfirmation::where('program_id', $program->id)->where('verifikasi', 1)->latest()->count();
         return view('front.donasi', compact('program', 'devs', 'donatur'));
     }
 
@@ -87,7 +87,6 @@ class frontController extends Controller
             $bukti = $konfirmasi->bukti_pembayaran = $fileName;
             $konfirmasi->update(['bukti_pembayaran' => $bukti]);
         }
-
         $program->update();
 
         return redirect()->route('thxkonfir', ['id' => $konfirmasi->id]);

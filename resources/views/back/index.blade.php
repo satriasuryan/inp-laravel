@@ -87,9 +87,6 @@ Dashboard
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                                     Nominal Donasi</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                    Bukti Pembayaran</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                                     Aksi</th>
@@ -118,14 +115,6 @@ Dashboard
                                                     @currency($donasi->nominal_donasi)
                                                 </td>
                                                 <td>
-                                                    @if ($donasi->bukti_pembayaran == null)
-                                                    <button class="btn btn-green">Tidak Ada</button>
-                                                    @else
-                                                    <button class="btn btn-red">Ada</button>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                  
                                                     @if ($donasi->verifikasi == 0)
 
                                                     <a href="/admin/verifikasi/{{$donasi->id}}"
@@ -136,7 +125,11 @@ Dashboard
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <img class="img-bukti" src="{{$donasi->getFoto()}}"> </td>
+                                                    @if ($donasi->bukti_pembayaran == null)
+                                                    Tidak Menyertakan Bukti Pembayaran
+                                                    @else
+                                                    <img class="img-bukti" src="{{$donasi->getFoto()}}"> 
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach
